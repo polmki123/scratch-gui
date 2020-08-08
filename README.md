@@ -294,3 +294,23 @@ npm install original-fs --save
 original-fs의 fs를 활용하여 모듈이 오가기 때문에 이를 설치해주면 정상적으로 컴파일 되는 것을 확인 할 수 있다. 
 
 4. scratch-blocks develop 버전이 안될경우
+scratch-blocks에서 안되는 npm install,test 가 안되는 경우 chromedirver의 버전을 맞추어 주면된다. 일반적으로 현재 크롬은 84버전인데 여기 패키지 버전은 81로 되어 있다. 
+```
+npm install chromedriver@84.0.0
+```
+으로 해주면 잘되는 것을 확인 할 수 있다. 그러나 npm install이 안되는 경우가 있는데 이런 경우는 보통 에러가 post가 안되서 난 오류인데
+```
+126 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/audits/quick 886ms
+127 timing audit body Completed in 1ms
+128 silly lifecycle scratch-blocks@0.1.0~prepublish: Returned: code: 2  signal: null
+129 info lifecycle scratch-blocks@0.1.0~prepublish: Failed to exec prepublish script
+```
+이렇게 뜨는데 여기는 우리가.. 들어갈수 있는 권한과 능력밖에 일이라 당연히 안되는 것이 맞다. npm test는 
+```
+DevTools listening on ws://127.0.0.1:59761/devtools/browser/f85e6ec9-271e-4b42-ba2b-4b1537c2b70d
+============Unit Test Summary=================
+Unit Tests for Vertical Scratch-Blockly [PASSED]
+202 passed, 0 failed
+============Unit Test Summary=================
+```
+우리 local에서 돌아감으로 잘 돌아가는 것을 확인 할 수 있다. 
