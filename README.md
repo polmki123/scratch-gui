@@ -42,7 +42,6 @@ version of the scratch-gui that is found by default using `npm install`.
 Here's how to link your local `scratch-gui` code to another project's `node_modules/scratch-gui`.
 
 #### Configuration
-
 1. In your local `scratch-gui` repository's top level:
     1. Make sure you have run `npm install`
     2. Build the `dist` directory by running `BUILD_MODE=dist npm run build`
@@ -256,3 +255,10 @@ We provide [Scratch](https://scratch.mit.edu) free of charge, and want to keep i
 
 ## 2020-08-09 
 직접적으로 설치 진행 우선 gui, blocks, l10n, vm을 각각 설치 하는것에 집중한다.
+
+1. scratch-vm 파일 설치 진행시 issue 
+scratch-vm 파일을 설치 할때 버전이 npm install을 진행하면 우선 설치가 되지 않는 몇몇 패키지가 존재한다. 설치 되지 않는 이유 중 하나는 해당 패키지를 설치하기전에 필요한 상위 버전의 패키지가 존재 하지 않아서 나는 오류 이다. 이런 경우에는 그 이전에 해당하는 패키지를 먼저 설치하고 진행하면 된다. 예를 들어 
+* npm warn : can't install eslint ~~ require babel@^1.0.2 혹은 babel > 1.0.0 
+이런 오류가 나온다면 
+* npm install babel@1.0.0 
+이렇게 설치하면 오류가 해결된다. 
