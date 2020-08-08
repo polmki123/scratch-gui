@@ -256,9 +256,39 @@ We provide [Scratch](https://scratch.mit.edu) free of charge, and want to keep i
 ## 2020-08-09 
 직접적으로 설치 진행 우선 gui, blocks, l10n, vm을 각각 설치 하는것에 집중한다.
 
-1. scratch-vm 파일 설치 진행시 issue 
+1. scratch-vm, scratch-blocks, scratch-l10n 파일 설치 진행시 issue 
 scratch-vm 파일을 설치 할때 버전이 npm install을 진행하면 우선 설치가 되지 않는 몇몇 패키지가 존재한다. 설치 되지 않는 이유 중 하나는 해당 패키지를 설치하기전에 필요한 상위 버전의 패키지가 존재 하지 않아서 나는 오류 이다. 이런 경우에는 그 이전에 해당하는 패키지를 먼저 설치하고 진행하면 된다. 예를 들어 
-* npm warn : can't install eslint ~~ require babel@^1.0.2 혹은 babel > 1.0.0 
+```
+npm WARN eslint-config-scratch@5.0.0 requires a peer of babel-eslint@^8.0.1 but none was installed.
+```
 이런 오류가 나온다면 
-* npm install babel@1.0.0 
-이렇게 설치하면 오류가 해결된다. 
+```
+npm install babel-eslint@^8.0.1 --save-dev  
+```
+이렇게 설치하면 오류가 해결된다. 공통적으로 나오는 문제이니 이런식으로 해결한다. 
+2. scratch-vm, scratch-blocks, scratch-l10n에서 런처 실행시 나는 오류
+```
+npm start, npm test 
+```
+와 같은 명령어를 쳤을 경우 
+```
+ValidationError: Invalid options object. Copy Plugin has been initialized using an options object that does not match the API schema.
+ - options[0] misses the property 'patterns'. 
+```
+과 같은 모듈에러가 나오는 경우가 있다. 이런 경우에는 해결하기 위해서 
+```
+npm install --save copy-webpack-plugin@5.1.1
+```
+아래와 copy-webpack을 깔아 주어야만 한다. 물론 webpack도 설치해야한다. (webpack-dev-server) 도 깔아 주어야 한다. 
+``` 
+npm install --save-dev webpack
+npm install webpack-dev-server --save-dev
+```
+3. scratch-gui의 npm start issue ㄴ
+scratch-gui에서 npm link scratch-vm scratch-blocks scratch-l10n을 친 다음 실행을 진행하면 많은 에러가 발생한다. 그 중에서도 가장 큰 문제는 모듈을 찾을 수 없다는 오류가 나오는 것이다.  
+이 경우에는 
+```
+npm install original-fs --save 
+``` 
+를 설치하고 진행해주면 된다. 기본적으로 모든 디렉터리 설정이 개인의 컴퓨터에 맞추어져 있어서 디렉토리 충돌이나는 경우가 있는데 이를 보완해주고 해결해주기 위해 사용되는 로직이다. 
+original-fs의 fs를 활용하여 모듈이 오가기 때문에 이를 설치해주면 정상적으로 컴파일 되는 것을 확인 할 수 있다. 
