@@ -266,6 +266,7 @@ npm WARN eslint-config-scratch@5.0.0 requires a peer of babel-eslint@^8.0.1 but 
 npm install babel-eslint@^8.0.1 --save-dev  
 ```
 이렇게 설치하면 오류가 해결된다. 공통적으로 나오는 문제이니 이런식으로 해결한다. 
+
 2. scratch-vm, scratch-blocks, scratch-l10n에서 런처 실행시 나는 오류
 ```
 npm start, npm test 
