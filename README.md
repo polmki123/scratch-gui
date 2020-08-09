@@ -317,3 +317,5 @@ Unit Tests for Vertical Scratch-Blockly [PASSED]
 우리 local에서 돌아감으로 잘 돌아가는 것을 확인 할 수 있다. 
 
 5. 기본적으로 설치 해야될 프로그램 파이썬2.7, java, git 
+
+6. git clone시 master로 먼저 깔고 develop를 깔면 이상없다. 
