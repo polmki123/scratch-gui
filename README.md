@@ -315,3 +315,5 @@ Unit Tests for Vertical Scratch-Blockly [PASSED]
 ============Unit Test Summary=================
 ```
 우리 local에서 돌아감으로 잘 돌아가는 것을 확인 할 수 있다. 
+
+5. 기본적으로 설치 해야될 프로그램 파이썬2.7, java, git 
