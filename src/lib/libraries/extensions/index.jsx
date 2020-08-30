@@ -46,6 +46,11 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
+import ARduinoImage from './ARduino/ARduino.png';
+import ARduinoInsetIconURL from './ARduino/ARduino-small.svg';
+import ARduinoConnectionIconURL from './ARduino/ARduino-illustration.svg';
+import ARduinoConnectionSmallIconURL from './ARduino/ARduino-small.svg';
+
 export default [
     {
         name: (
@@ -317,5 +322,35 @@ export default [
             />
         ),
         helpLink: 'https://scratch.mit.edu/vernier'
+    },
+    {
+        name: 'AR & Arduino collaborate',
+        extensionId: 'ARduino',
+        collaborator: '',
+        iconURL: ARduinoIconURL,
+        insetIconURL: ARduinoInsetIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Using Arduino in AR "
+                description="Make Arduino in AR simulator Make Anything"
+                id="gui.extension.ARduino.description"
+            />
+        ),
+        featured: true,
+        disabled: false,
+        bluetoothRequired: true,
+        internetConnectionRequired: true,
+        launchPeripheralConnectionFlow: true,
+        useAutoScan: false,
+        connectionIconURL: ARduinoConnectionIconURL,
+        connectionSmallIconURL: ARduinoConnectionSmallIconURL,
+        connectingMessage: (
+            <FormattedMessage
+                defaultMessage="Connecting"
+                description="Make Arduino in AR simulator Make Anything"
+                id="gui.extension.ARduino.connectingMessage"
+            />
+        ),
+        helpLink: 'https://github.com/polmki123/scratch-gui'
     }
 ];
