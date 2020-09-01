@@ -46,7 +46,7 @@ import gdxforInsetIconURL from './gdxfor/gdxfor-small.svg';
 import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
-import ARduinoImage from './ARduino/ARduino.png';
+import ARduinoIconURL from './ARduino/ARduino.png';
 import ARduinoInsetIconURL from './ARduino/ARduino-small.svg';
 import ARduinoConnectionIconURL from './ARduino/ARduino-illustration.svg';
 import ARduinoConnectionSmallIconURL from './ARduino/ARduino-small.svg';
