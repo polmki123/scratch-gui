@@ -42,6 +42,7 @@ version of the scratch-gui that is found by default using `npm install`.
 Here's how to link your local `scratch-gui` code to another project's `node_modules/scratch-gui`.
 
 #### Configuration
+
 1. In your local `scratch-gui` repository's top level:
     1. Make sure you have run `npm install`
     2. Build the `dist` directory by running `BUILD_MODE=dist npm run build`
@@ -190,6 +191,13 @@ npm install  --no-optional --save-dev react-responsive@^5.0.0
 
 Further reading: [Stack Overflow](https://stackoverflow.com/questions/46602286/npm-requires-a-peer-of-but-all-peers-are-in-package-json-and-node-modules)
 
+## Troubleshooting
+
+If you run into npm install errors, try these steps:
+1. run `npm cache clean --force`
+2. Delete the node_modules directory
+3. Delete package-lock.json
+4. run `npm install` again
 
 ## Publishing to GitHub Pages
 You can publish the GUI to github.io so that others on the Internet can view it.
@@ -252,70 +260,3 @@ Here's what will happen in the project state machine:
 
 ## Donate
 We provide [Scratch](https://scratch.mit.edu) free of charge, and want to keep it that way! Please consider making a [donation](https://secure.donationpay.org/scratchfoundation/) to support our continued engineering, design, community, and resource development efforts. Donations of any size are appreciated. Thank you!
-
-## 2020-08-09 
-직접적으로 설치 진행 우선 gui, blocks, l10n, vm을 각각 설치 하는것에 집중한다.
-
-1. scratch-vm, scratch-blocks, scratch-l10n 파일 설치 진행시 issue 
-scratch-vm 파일을 설치 할때 버전이 npm install을 진행하면 우선 설치가 되지 않는 몇몇 패키지가 존재한다. 설치 되지 않는 이유 중 하나는 해당 패키지를 설치하기전에 필요한 상위 버전의 패키지가 존재 하지 않아서 나는 오류 이다. 이런 경우에는 그 이전에 해당하는 패키지를 먼저 설치하고 진행하면 된다. 예를 들어 
-```
-npm WARN eslint-config-scratch@5.0.0 requires a peer of babel-eslint@^8.0.1 but none was installed.
-```
-이런 오류가 나온다면 
-```
-npm install babel-eslint@^8.0.1 --save-dev  
-```
-이렇게 설치하면 오류가 해결된다. 공통적으로 나오는 문제이니 이런식으로 해결한다. 
-
-2. scratch-vm, scratch-blocks, scratch-l10n에서 런처 실행시 나는 오류
-```
-npm start, npm test 
-```
-와 같은 명령어를 쳤을 경우 
-```
-ValidationError: Invalid options object. Copy Plugin has been initialized using an options object that does not match the API schema.
- - options[0] misses the property 'patterns'. 
-```
-과 같은 모듈에러가 나오는 경우가 있다. 이런 경우에는 해결하기 위해서 
-```
-npm install --save copy-webpack-plugin@5.1.1
-```
-아래와 copy-webpack을 깔아 주어야만 한다. 물론 webpack도 설치해야한다. (webpack-dev-server) 도 깔아 주어야 한다. 
-``` 
-npm install --save-dev webpack
-npm install webpack-dev-server --save-dev
-```
-3. scratch-gui의 npm start issue ㄴ
-scratch-gui에서 npm link scratch-vm scratch-blocks scratch-l10n을 친 다음 실행을 진행하면 많은 에러가 발생한다. 그 중에서도 가장 큰 문제는 모듈을 찾을 수 없다는 오류가 나오는 것이다.  
-이 경우에는 
-```
-npm install original-fs --save 
-``` 
-를 설치하고 진행해주면 된다. 기본적으로 모든 디렉터리 설정이 개인의 컴퓨터에 맞추어져 있어서 디렉토리 충돌이나는 경우가 있는데 이를 보완해주고 해결해주기 위해 사용되는 로직이다. 
-original-fs의 fs를 활용하여 모듈이 오가기 때문에 이를 설치해주면 정상적으로 컴파일 되는 것을 확인 할 수 있다. 
-
-4. scratch-blocks develop 버전이 안될경우
-scratch-blocks에서 안되는 npm install,test 가 안되는 경우 chromedirver의 버전을 맞추어 주면된다. 일반적으로 현재 크롬은 84버전인데 여기 패키지 버전은 81로 되어 있다. 
-```
-npm install chromedriver@84.0.0
-```
-으로 해주면 잘되는 것을 확인 할 수 있다. 그러나 npm install이 안되는 경우가 있는데 이런 경우는 보통 에러가 post가 안되서 난 오류인데
-```
-126 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/audits/quick 886ms
-127 timing audit body Completed in 1ms
-128 silly lifecycle scratch-blocks@0.1.0~prepublish: Returned: code: 2  signal: null
-129 info lifecycle scratch-blocks@0.1.0~prepublish: Failed to exec prepublish script
-```
-이렇게 뜨는데 여기는 우리가.. 들어갈수 있는 권한과 능력밖에 일이라 당연히 안되는 것이 맞다. npm test는 
-```
-DevTools listening on ws://127.0.0.1:59761/devtools/browser/f85e6ec9-271e-4b42-ba2b-4b1537c2b70d
-============Unit Test Summary=================
-Unit Tests for Vertical Scratch-Blockly [PASSED]
-202 passed, 0 failed
-============Unit Test Summary=================
-```
-우리 local에서 돌아감으로 잘 돌아가는 것을 확인 할 수 있다. 
-
-5. 기본적으로 설치 해야될 프로그램 파이썬2.7, java, git 
-
-6. git clone시 master로 먼저 깔고 develop를 깔면 이상없다. 

@@ -48,8 +48,6 @@ import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
 import ARduinoIconURL from './ARduino/ARduino.png';
 import ARduinoInsetIconURL from './ARduino/ARduino-small.svg';
-// import ARduinoConnectionIconURL from './ARduino/ARduino-illustration.svg';
-// import ARduinoConnectionSmallIconURL from './ARduino/ARduino-small.svg';
 
 export default [
     {
@@ -326,7 +324,7 @@ export default [
     {
         name: (
             <FormattedMessage
-                defaultMessage= "arduino"
+                defaultMessage="arduino"
                 description="Name for the 'arduino' extension"
                 id="gui.extension.arduino.name"
             />
