@@ -334,7 +334,7 @@ export default [
         insetIconURL: ARduinoInsetIconURL,
         description: (
             <FormattedMessage
-                defaultMessage="Draw with your sprites."
+                defaultMessage="Make Arduino in AR world."
                 description="Description for the 'arduino' extension"
                 id="gui.extension.arduino.description"
             />
